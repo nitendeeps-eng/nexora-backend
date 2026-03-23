@@ -13,32 +13,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = os.getenv("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")
+API_KEY = os.getenv("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")
 
 @app.get("/")
 def home():
-    return {"message": "NEXORA AI running 🚀"}
+    return {"message": "NEXORA AI (Groq) running 🚀"}
 
 @app.get("/chat")
 def chat(user_input: str):
     try:
         response = requests.post(
-            "https://router.huggingface.co/hf-inference/models/google/flan-t5-large",
+            "https://api.groq.com/openai/v1/chat/completions",
             headers={
-                "Authorization": f"Bearer {API_KEY}"
+                "Authorization": f"Bearer {API_KEY}",
+                "Content-Type": "application/json"
             },
             json={
-                "inputs": user_input
+                "model": "llama3-8b-8192",
+                "messages": [
+                    {"role": "system", "content": "You are a business chatbot. Ask for name and phone if user is interested."},
+                    {"role": "user", "content": user_input}
+                ]
             }
         )
 
         data = response.json()
         print("DEBUG:", data)
 
-        if isinstance(data, list):
-            reply = data[0]["generated_text"]
-        else:
-            reply = str(data)
+        reply = data["choices"][0]["message"]["content"]
 
         return {"message": reply}
 
