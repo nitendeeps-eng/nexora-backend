@@ -17,13 +17,13 @@ API_KEY = os.getenv("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")
 
 @app.get("/")
 def home():
-    return {"message": "NEXORA AI (FREE HF) running 🚀"}
+    return {"message": "NEXORA AI running 🚀"}
 
 @app.get("/chat")
 def chat(user_input: str):
     try:
         response = requests.post(
-            "https://api-inference.huggingface.co/models/google/flan-t5-large",
+            "https://router.huggingface.co/hf-inference/models/google/flan-t5-large",
             headers={
                 "Authorization": f"Bearer {API_KEY}"
             },
@@ -33,7 +33,6 @@ def chat(user_input: str):
         )
 
         data = response.json()
-
         print("DEBUG:", data)
 
         if isinstance(data, list):
