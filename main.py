@@ -40,7 +40,11 @@ def chat(user_input: str):
         data = response.json()
         print("DEBUG:", data)
 
-        reply = data["choices"][0]["message"]["content"]
+        # ✅ SAFE HANDLING
+        if "choices" in data:
+            reply = data["choices"][0]["message"]["content"]
+        else:
+            reply = "Error: " + str(data)
 
         return {"message": reply}
 
