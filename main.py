@@ -13,7 +13,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = os.getenv("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")
+API_KEY = os.getenv("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")
 
 @app.get("/")
 def home():
