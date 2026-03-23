@@ -2,9 +2,9 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
 import os
-API_KEY = os.getenv("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")
+API_KEY = os.getenv("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")
 
-print("API KEY:", "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")  # DEBUG
+print("API KEY:", "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")  # DEBUG
 
 app = FastAPI()
 
@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = "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"
+API_KEY = "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"
 
 @app.get("/")
 def home():
