@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+import os
+API_KEY = os.getenv("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")
+
+print("API KEY:", API_KEY)  # DEBUG
 
 app = FastAPI()
 
