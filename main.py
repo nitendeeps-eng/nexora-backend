@@ -31,10 +31,10 @@ def chat(user_input: str):
                 "Content-Type": "application/json"
             },
             json={
-                "model": "llama3-8b-8192",
-                "messages": [
-                    {"role": "system", "content": "You are a business chatbot. Ask for name and phone if user is interested."},
-                    {"role": "user", "content": user_input}
+            "model": "llama-3.1-8b-instant",
+            "messages": [
+                {"role": "system", "content": "You are a professional business chatbot. Ask for name and phone if user shows interest."},
+                {"role": "user", "content": user_input}
                 ]
             }
         )
