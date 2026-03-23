@@ -12,7 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = "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"
+API_KEY = "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"
 
 @app.get("/")
 def home():
